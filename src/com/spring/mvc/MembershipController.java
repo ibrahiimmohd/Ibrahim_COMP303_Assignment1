@@ -1,3 +1,8 @@
+/*
+ * Ibrahim Ali
+ * 301022172
+ * 18-02-2021
+ * */
 package com.spring.mvc;
 
 import java.util.ArrayList;
@@ -11,13 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MembershipController {
-
+	
+	//submit post for index page
 	@RequestMapping("/submit")
 	public ModelAndView submitForm(HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mview = new ModelAndView("show_details");
 		
+		//initialize mBean from MembershipBean model
 		MembershipBean mBean = new MembershipBean();
-
+		
+		//get values from index page
 		mBean.firstName = request.getParameter("firstName"); 
 		mBean.lastName  = request.getParameter("lastName"); 
 		mBean.streetAddress  = request.getParameter("streetAddress"); 
@@ -45,7 +53,8 @@ public class MembershipController {
 		if(mBean.getMembershipWeekly() != null ) {
 			membership.add(mBean.getMembershipWeekly());
 		}
-
+		
+		//pass value to show_details page
 	    mview.addObject("firstName", mBean.getFirstName());
 	    mview.addObject("lastName", mBean.getLastName());
 	    mview.addObject("streetAddress", mBean.getStreetAddress());
